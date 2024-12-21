@@ -1,0 +1,12 @@
+include:
+  - ../compose.yml 
+
+services:
+  runner:
+    build: .
+    container_name: runner
+    hostname: runner
+    networks: [opensearch-net]
+    depends_on: [nimbus]
+    volumes: [../../:/workspaces:cached]
+    command: sleep infinity
